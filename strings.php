@@ -21,11 +21,9 @@ $contas = [
     'sexo'=>'false',
     'numero'=>'975239051'];
 
-    function insert ($con, array $valor) {
-  $con->prepare('INSERT INTO 
-  usuario (nome,usuario,email,sexo,numero) 
-  VALUES (:nome,:usuario,:email)')->execute($valor);
-    }
+
+  $con->prepare('INSERT INTO   usuario (nome,usuario,email,sexo,numero) VALUES (:nome,:usuario,:email,:sexo,:numero)')->execute($contas);
+
 
 
   // 
@@ -44,7 +42,7 @@ $contas = [
     }
 }
 
-echo(contadorCaracteres('batata doce'));
+echo(contadorCaracteres($senha));
 
 
   // 
