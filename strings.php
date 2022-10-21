@@ -9,23 +9,22 @@ $con = new PDO("mysql:host=$server;dbname=$database", "$user","$password" );
 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if ($con == true) {
-    echo "voce está conectado ao banco de dados";
+    echo "voce está conectado ao banco de dados" . PHP_EOL;
 } else {
     echo "erro ao conectar";
 };
 
-$contas = 
-array(
+$contas = [
     'nome'=>'José',
     'usuario'=>'TI',
     'email'=>'nico.doido@gmail.com',
     'sexo'=>'false',
-    'numero'=>'975239051');
+    'numero'=>'975239051'];
 
-    function insert ($con, $contas) {
+    function insert ($con, array $valor) {
   $con->prepare('INSERT INTO 
   usuario (nome,usuario,email,sexo,numero) 
-  VALUES (:nome,:usuario,:email)')->execute($contas);
+  VALUES (:nome,:usuario,:email)')->execute($valor);
     }
 
 
@@ -35,8 +34,19 @@ array(
   // $senhaDigitada = 'a12222211111niver1';
   // $usuarioDigitado = 'nicollas.souza';
   // 
-   echo($qtdSenha = mb_strlen($senha));
-   
+   function contadorCaracteres($valor) { 
+
+    if ((mb_strlen("$valor") <= 1)) {
+    echo (mb_strlen("$valor") . " caracter")
+    ;}
+    else {
+    echo (mb_strlen("$valor") . " caracteres");
+    }
+}
+
+echo(contadorCaracteres('batata doce'));
+
+
   // 
   // if ($qtdSenha <= 13) {
   //     echo 'senha insegura <p>'. PHP_EOL;
