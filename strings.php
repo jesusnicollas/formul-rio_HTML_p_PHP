@@ -1,29 +1,21 @@
 <?php 
 
-$server = "127.0.0.1";
-$database = "appdb";
-$user = "root";
-$password = "";
-
-$con = new PDO("mysql:host=$server;dbname=$database", "$user","$password" );
-$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-if ($con == true) {
-    echo "voce está conectado ao banco de dados" . PHP_EOL;
-} else {
-    echo "erro ao conectar";
-};
-
-$contas = [
-    'nome'=>'José',
-    'usuario'=>'TI',
-    'email'=>'nico.doido@gmail.com',
-    'sexo'=>'false',
-    'numero'=>'975239051'];
+include_once 'conexao.php';
+// conectando ao banco de dados com user 'usrsite'
 
 
-  $con->prepare('INSERT INTO   usuario (nome,usuario,email,sexo,numero) VALUES (:nome,:usuario,:email,:sexo,:numero)')->execute($contas);
+// dados do usuário que serão inseridos
+$user1 = [
+    'nome'=>'Bragatto',
+    'usuario'=>'lucas.bragatto',
+    'email'=>'bragas@gmail.com',
+    'cpf'=>'11111100117',
+    'senha'=>'tuégay'];
+  
 
+// INSERT dos dados do usuário no banco de dados
+  $con->prepare('INSERT INTO tb_usuario (nome,usuario,email,cpf,senha) 
+  VALUES (:nome,:usuario,:email,:cpf,:senha)')->execute($user1);
 
 
   // 
