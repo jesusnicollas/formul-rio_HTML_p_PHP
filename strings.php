@@ -2,15 +2,21 @@
 
 include_once 'conexao.php';
 // conectando ao banco de dados com user 'usrsite'
+$nome= $_POST['nome'];
+$usuario= $_POST['usuario'];
+$email= $_POST['email'];
+$senha= $_POST['senha'];
+$cpf= $_POST['cpf'];
 
+echo "olá $nome <p> Seu usuário é: $usuario <p>" . PHP_EOL;
 
 // dados do usuário que serão inseridos
 $user1 = [
-    'nome'=>'Bragatto',
-    'usuario'=>'lucas.bragatto',
-    'email'=>'bragas@gmail.com',
-    'cpf'=>'11111100117',
-    'senha'=>'tuégay'];
+    'nome'=> $nome,
+    'usuario'=> $usuario,
+    'email'=> $email,
+    'cpf'=> $cpf,
+    'senha'=>$senha];
   
 
 // INSERT dos dados do usuário no banco de dados
